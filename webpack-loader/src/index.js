@@ -1,10 +1,21 @@
+class Test {
+  constructor(name) {
+    this.name = name;
+  }
+  sayName() {
+    console.log(this.name);
+  }
+}
+const t = new Test("loader");
+console.log(t);
+// =====================================================
 // 行内loader
 // -! 不会让文件再通过pre+normal loader再去处理
 // ! 不要normal
 // !! 什么都不要
-const a = require("!!inline-loader!./a.js");
-console.log("index");
-console.log(a);
+// const a = require("!!inline-loader!./a.js");
+// console.log("index");
+// console.log(a);
 
 // loader 默认是由两部分组成 pitch+normal
 
@@ -34,15 +45,15 @@ console.log(a);
 // 其次，如果某个 loader 在 pitch 方法中给出一个结果，那么这个过程会回过身来，并跳过剩下的 loader。
 // 在我们上面的例子中，如果 b-loader 的 pitch 方法返回了一些东西：
 
-module.exports.pitch = function(remainingRequest, precedingRequest, data) {
-  if (someCondition()) {
-    return (
-      "module.exports = require(" +
-      JSON.stringify("-!" + remainingRequest) +
-      ");"
-    );
-  }
-};
+// module.exports.pitch = function(remainingRequest, precedingRequest, data) {
+//   if (someCondition()) {
+//     return (
+//       "module.exports = require(" +
+//       JSON.stringify("-!" + remainingRequest) +
+//       ");"
+//     );
+//   }
+// };
 
 // 上面的步骤将被缩短为：
 

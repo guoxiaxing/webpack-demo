@@ -14,8 +14,18 @@ module.exports = {
     //   loader1: path.resolve(__dirname, "loaders", "loader1.js")
     // }
   },
+  devtool: "source-map",
   module: {
     rules: [
+      {
+        test: /\.js$/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env"]
+          }
+        }
+      }
       // 单个loader
       // {
       //   test: /\.js$/,
@@ -55,26 +65,26 @@ module.exports = {
       // post 在后面的
       // normal
       // loader的顺序 pre -- normal --- inline(行内) --- post
-      {
-        test: /\.js$/,
-        use: {
-          loader: "loader1"
-        },
-        enforce: "pre"
-      },
-      {
-        test: /\.js$/,
-        use: {
-          loader: "loader2"
-        }
-      },
-      {
-        test: /\.js$/,
-        use: {
-          loader: "loader3"
-        },
-        enforce: "post"
-      }
+      // {
+      //   test: /\.js$/,
+      //   use: {
+      //     loader: "loader1"
+      //   },
+      //   enforce: "pre"
+      // },
+      // {
+      //   test: /\.js$/,
+      //   use: {
+      //     loader: "loader2"
+      //   }
+      // },
+      // {
+      //   test: /\.js$/,
+      //   use: {
+      //     loader: "loader3"
+      //   },
+      //   enforce: "post"
+      // }
     ]
   }
 };

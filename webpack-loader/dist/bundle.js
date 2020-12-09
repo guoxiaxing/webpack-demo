@@ -1,56 +1,75 @@
-/*
- * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
- * This devtool is not neither made for production nor for readable output files.
- * It uses "eval()" calls to create a separate source file in the browser devtools.
- * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
- * or disable the default devtool with "devtool: false".
- * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
- */
 /******/ (() => { // webpackBootstrap
-/******/ 	var __webpack_modules__ = ({
-
-/***/ "./loaders/inline-loader.js!./src/a.js":
-/*!*********************************************!*
-  !*** ./loaders/inline-loader.js!./src/a.js ***!
-  \*********************************************/
-/***/ ((module) => {
-
-eval("module.exports = \"loader-test\";\n\n\n//# sourceURL=webpack://webpack-loader/./src/a.js?./loaders/inline-loader.js");
-
-/***/ })
-
-/******/ 	});
-/************************************************************************/
-/******/ 	// The module cache
-/******/ 	var __webpack_module_cache__ = {};
-/******/ 	
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/ 		// Check if module is in cache
-/******/ 		if(__webpack_module_cache__[moduleId]) {
-/******/ 			return __webpack_module_cache__[moduleId].exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = __webpack_module_cache__[moduleId] = {
-/******/ 			// no module.id needed
-/******/ 			// no module.loaded needed
-/******/ 			exports: {}
-/******/ 		};
-/******/ 	
-/******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
-/******/ 	
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/ 	
-/************************************************************************/
-(() => {
+/******/ 	"use strict";
 /*!**********************!*
   !*** ./src/index.js ***!
   \**********************/
-eval("// 行内loader\n// -! 不会让文件再通过pre+normal loader再去处理\n// ! 不要normal\n// !! 什么都不要\nconst a = __webpack_require__(/*! !!inline-loader!./a.js */ \"./loaders/inline-loader.js!./src/a.js\");\nconsole.log(\"index\");\nconsole.log(a);\n\n\n//# sourceURL=webpack://webpack-loader/./src/index.js?");
-})();
 
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var Test = /*#__PURE__*/function () {
+  function Test(name) {
+    _classCallCheck(this, Test);
+
+    this.name = name;
+  }
+
+  _createClass(Test, [{
+    key: "sayName",
+    value: function sayName() {
+      console.log(this.name);
+    }
+  }]);
+
+  return Test;
+}();
+
+var t = new Test("loader");
+console.log(t); // =====================================================
+// 行内loader
+// -! 不会让文件再通过pre+normal loader再去处理
+// ! 不要normal
+// !! 什么都不要
+// const a = require("!!inline-loader!./a.js");
+// console.log("index");
+// console.log(a);
+// loader 默认是由两部分组成 pitch+normal
+// 越过 loader(Pitching loader)
+// loader 总是从右到左地被调用。有些情况下，loader 只关心 request 后面的元数据(metadata)，并且忽略前一个 loader 的结果。
+// 在实际（从右到左）执行 loader 之前，会先从左到右调用 loader 上的 pitch 方法。
+// use: [
+//     'a-loader',
+//     'b-loader',
+//     'c-loader'
+// ]
+// 执行顺序
+// |- a-loader `pitch`
+//   |- b-loader `pitch`
+//     |- c-loader `pitch`
+//       |- requested module is picked up as a dependency
+//     |- c-loader normal execution
+//   |- b-loader normal execution
+// |- a-loader normal execution
+// 首先，传递给 pitch 方法的 data，在执行阶段也会暴露在 this.data 之下，并且可以用于在循环时，捕获和共享前面的信息。
+// 其次，如果某个 loader 在 pitch 方法中给出一个结果，那么这个过程会回过身来，并跳过剩下的 loader。
+// 在我们上面的例子中，如果 b-loader 的 pitch 方法返回了一些东西：
+// module.exports.pitch = function(remainingRequest, precedingRequest, data) {
+//   if (someCondition()) {
+//     return (
+//       "module.exports = require(" +
+//       JSON.stringify("-!" + remainingRequest) +
+//       ");"
+//     );
+//   }
+// };
+// 上面的步骤将被缩短为：
+// |- a-loader `pitch`
+//   |- b-loader `pitch` returns a module
+// |- a-loader normal execution
 /******/ })()
 ;
+//# sourceMappingURL=bundle.js.map
