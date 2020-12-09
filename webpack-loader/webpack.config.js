@@ -15,17 +15,28 @@ module.exports = {
     // }
   },
   devtool: "source-map",
+  watch: true,
   module: {
     rules: [
       {
         test: /\.js$/,
         use: {
-          loader: "babel-loader",
+          loader: "banner-loader",
           options: {
-            presets: ["@babel/preset-env"]
+            text: "Webpack Loader",
+            filename: path.resolve(__dirname, "banner.js")
           }
         }
       }
+      // {
+      //   test: /\.js$/,
+      //   use: {
+      //     loader: "babel-loader",
+      //     options: {
+      //       presets: ["@babel/preset-env"]
+      //     }
+      //   }
+      // }
       // 单个loader
       // {
       //   test: /\.js$/,
