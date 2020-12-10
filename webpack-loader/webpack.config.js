@@ -19,6 +19,18 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.png$/,
+        // 根据图片生成一个md5时间戳 发射到 dist 目录下 file-loader还会返回当前图片路径
+        // use: ["file-loader"]
+        // url-loader 用来处理路径 然后交给 file-loader 它会将文件发射出来
+        use: {
+          loader: "url-loader",
+          options: {
+            limit: 20 * 1024
+          }
+        }
+      },
+      {
         test: /\.js$/,
         use: {
           loader: "banner-loader",

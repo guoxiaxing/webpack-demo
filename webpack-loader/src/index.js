@@ -1,13 +1,19 @@
-class Test {
-  constructor(name) {
-    this.name = name;
-  }
-  sayName() {
-    console.log(this.name);
-  }
-}
-const t = new Test("loader");
-console.log(t);
+import p from "../assets/img/2970826755-58c670fe44efa_articlex.png";
+const img = document.createElement("img");
+img.src = p;
+document.body.appendChild(img);
+// =====================================================
+
+// class Test {
+//   constructor(name) {
+//     this.name = name;
+//   }
+//   sayName() {
+//     console.log(this.name);
+//   }
+// }
+// const t = new Test("loader");
+// console.log(t);
 // =====================================================
 // 行内loader
 // -! 不会让文件再通过pre+normal loader再去处理
