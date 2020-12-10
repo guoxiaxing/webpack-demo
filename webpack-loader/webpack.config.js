@@ -39,6 +39,10 @@ module.exports = {
             filename: path.resolve(__dirname, "banner.js")
           }
         }
+      },
+      {
+        test: /\.less$/,
+        use: ["style-loader", "css-loader", "less-loader"]
       }
       // {
       //   test: /\.js$/,

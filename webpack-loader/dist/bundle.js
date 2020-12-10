@@ -9,13 +9,16 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _assets_img_2970826755_58c670fe44efa_articlex_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../assets/img/2970826755-58c670fe44efa_articlex.png */ "./assets/img/2970826755-58c670fe44efa_articlex.png");
-/* harmony import */ var _assets_img_2970826755_58c670fe44efa_articlex_png__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_assets_img_2970826755_58c670fe44efa_articlex_png__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _index_less__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.less */ "./src/index.less");
+/* harmony import */ var _index_less__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_less__WEBPACK_IMPORTED_MODULE_0__);
 /** HAHAHAHEHE;
  **/
-const img = document.createElement("img");
-img.src = (_assets_img_2970826755_58c670fe44efa_articlex_png__WEBPACK_IMPORTED_MODULE_0___default());
-document.body.appendChild(img);
+// =====================================================
+
+// import p from "../assets/img/2970826755-58c670fe44efa_articlex.png";
+// const img = document.createElement("img");
+// img.src = p;
+// document.body.appendChild(img);
 // =====================================================
 
 // class Test {
@@ -81,6 +84,36 @@ document.body.appendChild(img);
 //   |- b-loader `pitch` returns a module
 // |- a-loader normal execution
 
+
+/***/ }),
+
+/***/ "./loaders/css-loader.js!./loaders/less-loader.js!./src/index.less":
+/*!*************************************************************************!*
+  !*** ./loaders/css-loader.js!./loaders/less-loader.js!./src/index.less ***!
+  \*************************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+let list = [];
+list.push("body {\n  background-color: red;\n  background: ")
+list.push('url(' + __webpack_require__(/*! ../assets/img/2970826755-58c670fe44efa_articlex.png */ "./assets/img/2970826755-58c670fe44efa_articlex.png") + ')')
+list.push(";\n}\n")
+module.exports = list.join('')
+
+/***/ }),
+
+/***/ "./src/index.less":
+/*!************************!*
+  !*** ./src/index.less ***!
+  \************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+
+        const style = document.createElement('style');
+        // JSON.stringify(source) 是为了去除换行
+        // stringifyRequest 将绝对路径转化为相对路径
+        style.innerHTML = __webpack_require__(/*! !!../loaders/css-loader.js!../loaders/less-loader.js!./index.less */ "./loaders/css-loader.js!./loaders/less-loader.js!./src/index.less");
+        document.head.appendChild(style);
+      
 
 /***/ }),
 

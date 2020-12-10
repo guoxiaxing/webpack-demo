@@ -1,7 +1,10 @@
-import p from "../assets/img/2970826755-58c670fe44efa_articlex.png";
-const img = document.createElement("img");
-img.src = p;
-document.body.appendChild(img);
+import "./index.less";
+// =====================================================
+
+// import p from "../assets/img/2970826755-58c670fe44efa_articlex.png";
+// const img = document.createElement("img");
+// img.src = p;
+// document.body.appendChild(img);
 // =====================================================
 
 // class Test {
