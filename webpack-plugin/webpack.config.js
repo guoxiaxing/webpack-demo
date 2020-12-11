@@ -1,6 +1,6 @@
 const path = require("path");
-const DonePlugin = require("./plugins/DonePlugin");
-const CompilationPlugin = require("./plugins/CompilationPlugin");
+const HTMLWebpackPlugin = require("html-webpack-plugin");
+const FileListPlugin = require("./plugins/FileListPlugin");
 module.exports = {
   mode: "development",
   entry: "./src/index.js",
@@ -8,5 +8,12 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js"
   },
-  plugins: [new DonePlugin(), new CompilationPlugin()]
+  plugins: [
+    new HTMLWebpackPlugin({
+      template: "./src/index.html"
+    }),
+    new FileListPlugin({
+      filename: "list.md"
+    })
+  ]
 };
