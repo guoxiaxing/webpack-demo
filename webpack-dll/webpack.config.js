@@ -62,3 +62,27 @@ module.exports = {
     ]
   }
 };
+
+
+// 另一个配置 可做参考
+
+
+// 文件目录：configs/webpack.common.js
+// 代码太长可以不看
+
+// const path = require('path');
+// const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin'); // 顾名思义，把资源加到 html 里，那这个插件把 dll 加入到 index.html 里
+// const webpack = require('webpack');
+// module.exports = {
+//   // ......
+//   plugins: [
+//     new webpack.DllReferencePlugin({
+//       // 注意: DllReferencePlugin 的 context 必须和 package.json 的同级目录，要不然会链接失败
+//       context: path.resolve(__dirname, '../'),
+//       manifest: path.resolve(__dirname, '../dll/react.manifest.json'),
+//     }),
+//     new AddAssetHtmlPlugin({
+//       filepath: path.resolve(__dirname, '../dll/_dll_react.js'),
+//     }),
+//   ]
+// }
