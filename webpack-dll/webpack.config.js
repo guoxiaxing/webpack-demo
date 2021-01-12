@@ -114,5 +114,20 @@ module.exports = {
 // }
 
 
+// 如果项目上了 webpack 4，再使用 dll 收益并不大。我拿实际项目的代码试了一下，加入 dll 可能会有 1-2 s 的速度提升，对于整体打包时间可以说可以忽略不计
+
+// 比 DLL 更优秀的插件
+
+// dll 构建加速不明显了，有没有更好的替代品？在 AutoDllPlugin 的 README.md 里，给我们推荐了 HardSourceWebpackPlugin，初始配置更简单，只需要一行代码：
+// const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
+
+// module.exports = {
+//   // ......
+//   plugins: [
+//     new HardSourceWebpackPlugin() // <- 直接加入这行代码就行
+//   ]
+// }
+
+// 但是当我仔细想了一下 dll 的原理，发现也就是那么一回事儿，拿空间换时间，只不过配置复杂了一些。
 
 
