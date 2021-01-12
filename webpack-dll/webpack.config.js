@@ -86,3 +86,33 @@ module.exports = {
 //     }),
 //   ]
 // }
+
+
+// 解放双手 autodll-webpack-plugin 不需要手动配置太多繁琐的东西
+
+// 文件目录：configs/webpack.common.js
+
+// const path = require('path');
+// const AutoDllPlugin = require('autodll-webpack-plugin'); // 第 1 步：引入 DLL 自动链接库插件
+
+// module.exports = {
+//   // ......
+//   plugins: [
+//         // 第 2 步：配置要打包为 dll 的文件
+//         new AutoDllPlugin({
+//             inject: true, // 设为 true 就把 DLL bundles 插到 index.html 里
+//             filename: '[name].dll.js',
+//             context: path.resolve(__dirname, '../'), // AutoDllPlugin 的 context 必须和 package.json 的同级目录，要不然会链接失败
+//             entry: {
+//                 react: [
+//                     'react',
+//                     'react-dom'
+//                 ]
+//             }
+//         })
+//   ]
+// }
+
+
+
+
