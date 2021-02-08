@@ -1,0 +1,15 @@
+body {
+  background: pink;
+}
+
+div {
+  display: grid !important;
+}
+
+:root {
+  --highlightColor: lightblue;
+}
+
+body {
+  background-color: var(--highlightColor);
+}
