@@ -1,0 +1,27 @@
+{
+  "name": "webpack-demo",
+  "version": "1.0.0",
+  "description": "webpack-demo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guoxiaxing/webpack-demo.git"
+  },
+  "keywords": [
+    "webpack"
+  ],
+  "author": "guoxiaxing",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/guoxiaxing/webpack-demo/issues"
+  },
+  "homepage": "https://github.com/guoxiaxing/webpack-demo#readme",
+  "devDependencies": {
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
+  }
+}
